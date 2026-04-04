@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olympic Tiếng Việt – Toán Tuổi Thơ | Thi trực tuyến</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #D4A012;
+  --gold-light: #F4D35E;
+  --gold-dark: #B8860B;
+  --navy: #0C1B33;
+  --navy-mid: #152642;
+  --navy-light: #1E3A5F;
+  --blue: #2980B9;
+  --blue-light: #5DADE2;
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --cream: #FFF9E6;
+  --success: #27AE60;
+  --danger: #E74C3C;
+  --warning: #F39C12;
+  --text: #1A1A2E;
+  --text-light: #6B7280;
+  --border: #E5E7EB;
+  --shadow: 0 4px 16px rgba(12,27,51,0.1);
+  --shadow-lg: 0 12px 40px rgba(12,27,51,0.15);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: #F0FAF4;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0D7C3E, #10A04E, #15B358);
+  color: white;
+  padding: 14px 24px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(13,124,62,0.3);
+}
+.header::after {
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#34D399,#6EE7B7,#34D399);
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.header p { font-size: 0.75rem; opacity: 0.7; margin-top: 2px; }
+
+/* TIMER BAR */
+.timer-bar {
+  background: #0B6E36;
+  color: white;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 60px;
+  z-index: 99;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  flex-wrap: wrap;
+}
+.timer-bar .timer {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #6EE7B7;
+  min-width: 80px;
+  text-align: center;
+}
+.timer-bar .timer.warning { color: var(--warning); animation: pulse 1s infinite; }
+.timer-bar .timer.danger { color: var(--danger); animation: pulse 0.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+.timer-bar .info-item { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; opacity: 0.8; }
+
+/* PROGRESS */
+.progress-bar {
+  background: rgba(255,255,255,0.1);
+  height: 4px;
+  width: 100%;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #34D399, #10A04E);
+  transition: width 0.5s ease;
+}
+
+/* MAIN */
+.main { max-width: 800px; margin: 0 auto; padding: 24px; }
+
+/* LOGIN */
+.login-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.login-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+.login-card .trophy { font-size: 4rem; margin-bottom: 12px; }
+.login-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #0D7C3E;
+  margin-bottom: 4px;
+}
+.login-card .sub { font-size: 0.82rem; color: var(--text-light); margin-bottom: 24px; }
+.login-card .form-group {
+  text-align: left;
+  margin-bottom: 16px;
+}
+.login-card label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: block;
+  margin-bottom: 5px;
+}
+.login-card input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+.login-card input:focus {
+  outline: none;
+  border-color: #10A04E;
+  box-shadow: 0 0 0 3px rgba(16,160,78,0.15);
+}
+.login-card input::placeholder { letter-spacing: 0; font-weight: 400; font-size: 0.85rem; }
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #10A04E, #0D7C3E);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+  box-shadow: 0 4px 16px rgba(13,124,62,0.25);
+}
+.btn-login:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-login:active { transform: scale(0.98); }
+.login-error {
+  color: var(--danger);
+  font-size: 0.82rem;
+  margin-top: 10px;
+  display: none;
+}
+
+/* QUESTION CARD */
+.q-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  border: 1.5px solid var(--border);
+}
+.q-card.answered { border-color: #10A04E; }
+.q-card.current { border-color: #15B358; box-shadow: 0 0 0 3px rgba(16,160,78,0.15); }
+.q-card-head {
+  padding: 14px 20px;
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.q-card-num {
+  min-width: 34px; height: 34px;
+  background: #0D7C3E;
+  color: #E8F8F0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.q-card-head .q-info {
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+.q-card-head .q-info strong { color: #0D7C3E; }
+.q-card-head .q-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.q-card-head .q-status.done { background: #E8F8F0; color: var(--success); font-weight: 600; }
+.q-card-head .q-status.undone { background: #FFF3E0; color: var(--warning); }
+.q-card-body {
+  padding: 20px;
+}
+.q-card-body .q-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* ANSWER OPTIONS */
+.answer-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.answer-option:hover { border-color: #34D399; background: #E8F8F0; }
+.answer-option.selected { border-color: #10A04E; background: #E8F8F0; }
+.answer-option.correct { border-color: var(--success); background: #E8F8F0; }
+.answer-option.wrong { border-color: var(--danger); background: #FDEDEC; }
+.answer-option .opt-circle {
+  width: 24px; height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: var(--transition);
+  color: var(--text-light);
+  margin-top: 1px;
+}
+.answer-option.selected .opt-circle {
+  background: #10A04E;
+  border-color: #10A04E;
+  color: white;
+}
+.answer-option .opt-text { flex: 1; }
+
+/* FILL-IN */
+.fill-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+  text-align: center;
+}
+.fill-input:focus {
+  outline: none;
+  border-color: #10A04E;
+  box-shadow: 0 0 0 3px rgba(16,160,78,0.12);
+}
+
+/* TRUE/FALSE */
+.tf-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.tf-btn {
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+.tf-btn:hover { border-color: #34D399; }
+.tf-btn.selected { border-color: #10A04E; background: #E8F8F0; color: #0D7C3E; }
+
+/* QUESTION NAV */
+.q-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 16px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.q-nav-btn {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: white;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-light);
+}
+.q-nav-btn:hover { border-color: #10A04E; }
+.q-nav-btn.answered { background: #10A04E; color: white; border-color: #10A04E; }
+.q-nav-btn.current { border-color: #15B358; background: #E8F8F0; color: #0D7C3E; }
+
+/* SUBMIT */
+.submit-section {
+  text-align: center;
+  padding: 24px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+}
+.btn-submit {
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #10A04E, #0D7C3E);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(13,124,62,0.3);
+}
+.btn-submit:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.btn-submit:active { transform: scale(0.98); }
+
+/* RESULT */
+.result-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  margin: 40px auto;
+}
+.result-card .score-circle {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10A04E, #34D399);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 30px rgba(16,160,78,0.3);
+}
+.result-card .score-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+.result-card .score-label {
+  font-size: 0.75rem;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+/* HIDDEN SECTIONS */
+.page { display: none; }
+.page.active { display: block; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .main { padding: 12px; }
+  .login-card { padding: 28px 20px; }
+  .timer-bar { padding: 6px 12px; gap: 12px; }
+  .timer-bar .timer { font-size: 1.3rem; }
+  .q-card-body { padding: 14px; }
+}
+
+/* CONFETTI */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -20px;
+  z-index: 1000;
+  opacity: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="mainHeader">
+  <h1>🏆 Olympic Tiếng Việt – Toán Tuổi Thơ</h1>
+  <p>Hệ thống thi trực tuyến • Năm học 2025-2026</p>
+</header>
+
+<!-- TIMER BAR (hidden until exam) -->
+<div class="timer-bar" id="timerBar" style="display:none;">
+  <div class="info-item">📋 <span id="examSubject">Toán</span></div>
+  <div class="info-item">👤 <span id="examStudent">–</span></div>
+  <div class="timer" id="timerDisplay">40:00</div>
+  <div class="info-item">✅ <span id="answeredCount">0</span>/<span id="totalCount">15</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+</div>
+
+<!-- ==================== PAGE: LOGIN ==================== -->
+<div class="page active" id="page-login">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="trophy">🏆</div>
+      <h2>Đăng nhập dự thi</h2>
+      <div class="sub">Olympic Tiếng Việt – Toán Tuổi Thơ 2026</div>
+      
+      <div class="form-group">
+        <label>Mã phòng thi</label>
+        <input type="text" id="loginRoom" placeholder="VD: OLY-A1B2" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+      </div>
+      <div class="form-group">
+        <label>Số báo danh (SBD)</label>
+        <input type="text" id="loginSBD" placeholder="VD: 001">
+      </div>
+      
+      <button class="btn-login" onclick="doLogin()">🚀 Vào phòng thi</button>
+      <div class="login-error" id="loginError"></div>
+      
+      <div style="margin-top:20px;font-size:0.75rem;color:var(--text-light);">
+        Nhập mã phòng thi và SBD được giáo viên cấp.<br>
+        Lưu ý: Mỗi thí sinh chỉ được làm bài 1 lần.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: CONFIRM ==================== -->
+<div class="page" id="page-confirm">
+  <div class="main">
+    <div class="login-card" style="max-width:520px;margin:40px auto;text-align:left;">
+      <h2 style="text-align:center;margin-bottom:16px;color:#0D7C3E;">📋 Xác nhận thông tin</h2>
+      <div style="background:#E8F8F0;border-radius:var(--radius-sm);padding:16px;margin-bottom:16px;">
+        <table style="width:100%;font-size:0.9rem;">
+          <tr><td style="padding:6px 0;color:var(--text-light);width:40%;">Họ và tên:</td><td style="font-weight:700;" id="cfName">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">Trường:</td><td id="cfSchool">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">SBD:</td><td style="font-weight:700;" id="cfSBD">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">Phòng thi:</td><td id="cfRoom">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">Môn thi:</td><td style="font-weight:700;color:#0D7C3E;" id="cfSubject">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">Số câu hỏi:</td><td id="cfQuestions">–</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-light);">Thời gian:</td><td id="cfTime">–</td></tr>
+        </table>
+      </div>
+      <div style="background:#FDEDEC;border-radius:var(--radius-sm);padding:12px;font-size:0.82rem;color:var(--danger);margin-bottom:16px;">
+        ⚠️ <strong>Lưu ý:</strong> Khi bấm "Bắt đầu làm bài", đồng hồ sẽ bắt đầu đếm ngược. Hết thời gian bài thi sẽ tự động nộp. Mỗi thí sinh chỉ được làm bài 1 lần.
+      </div>
+      <div style="text-align:center;">
+        <button class="btn-login" onclick="startExam()" style="width:auto;padding:14px 40px;">▶ Bắt đầu làm bài</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: EXAM ==================== -->
+<div class="page" id="page-exam">
+  <div class="main">
+    <!-- Question navigation -->
+    <div class="q-nav" id="qNav"></div>
+    
+    <!-- Questions -->
+    <div id="questionsContainer"></div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:12px;">
+        Đã trả lời: <strong id="submitCount">0</strong> / <span id="submitTotal">15</span> câu
+      </p>
+      <button class="btn-submit" onclick="confirmSubmit()">📤 Nộp bài thi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: RESULT ==================== -->
+<div class="page" id="page-result">
+  <div class="main">
+    <div class="result-card" id="resultCard"></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: ALREADY SUBMITTED ==================== -->
+<div class="page" id="page-already">
+  <div class="main">
+    <div class="result-card">
+      <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+      <h2 style="color:#0D7C3E;margin-bottom:8px;">Bạn đã nộp bài!</h2>
+      <p style="color:var(--text-light);">Bài thi của bạn đã được ghi nhận. Vui lòng liên hệ giáo viên để xem kết quả.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  STATE
+// ================================================================
+let EXAM = {
+  room: null,
+  student: null,
+  questions: [],
+  answers: {},    // questionIndex -> answer
+  timeLeft: 0,
+  timerId: null,
+  started: false,
+  submitted: false
+};
+
+// ================================================================
+//  LOGIN
+// ================================================================
+//  GAS BACKEND CONFIG
+// ================================================================
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwqu3i-RmyvKeH664yd_x1N_ZojGwmsC3kz61QjzLAlRdVKSMfWEVkdsp23Mv2_Re5DYQ/exec';
+
+function useGAS() { return GAS_URL && GAS_URL.length > 10; }
+
+async function gasCall(action, data, params) {
+  if (!useGAS()) return null;
+  let url = GAS_URL + '?action=' + action;
+  if (params) {
+    Object.keys(params).forEach(k => url += '&' + k + '=' + encodeURIComponent(params[k]));
+  }
+  const opts = data
+    ? { method: 'POST', body: JSON.stringify(data), headers: {'Content-Type':'text/plain'} }
+    : { method: 'GET' };
+  const res = await fetch(url, opts);
+  return await res.json();
+}
+
+// ================================================================
+//  LOGIN (GAS hoặc localStorage)
+// ================================================================
+async function doLogin() {
+  const roomCode = document.getElementById('loginRoom').value.trim().toUpperCase();
+  const sbd = document.getElementById('loginSBD').value.trim();
+  const errEl = document.getElementById('loginError');
+  errEl.style.display = 'none';
+  
+  if (!roomCode || !sbd) {
+    errEl.textContent = 'Vui lòng nhập đầy đủ mã phòng và SBD!';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // ====== CHẾ ĐỘ GAS (multi-device) ======
+  if (useGAS()) {
+    document.querySelector('.btn-login').textContent = '🔄 Đang kết nối...';
+    document.querySelector('.btn-login').disabled = true;
+    
+    try {
+      const res = await gasCall('login', null, {roomCode, sbd});
+      
+      document.querySelector('.btn-login').textContent = '🚀 Vào phòng thi';
+      document.querySelector('.btn-login').disabled = false;
+      
+      if (!res || !res.success) {
+        if (res && res.error === 'already_submitted') {
+          showPage('already');
+          return;
+        }
+        errEl.textContent = res ? res.error : 'Không kết nối được server!';
+        errEl.style.display = 'block';
+        return;
+      }
+      
+      // Setup exam from GAS response
+      EXAM.room = res.room;
+      EXAM.student = res.student;
+      EXAM.questions = res.room.shuffle ? shuffleArray([...res.room.questions]) : [...res.room.questions];
+      EXAM.timeLeft = res.room.time * 60;
+      EXAM.answers = {};
+      
+      // Show confirm
+      document.getElementById('cfName').textContent = res.student.name;
+      document.getElementById('cfSchool').textContent = res.student.school || '–';
+      document.getElementById('cfSBD').textContent = res.student.sbd;
+      document.getElementById('cfRoom').textContent = res.room.code + ' – ' + res.room.name;
+      document.getElementById('cfSubject').textContent = res.room.subject;
+      document.getElementById('cfQuestions').textContent = EXAM.questions.length + ' câu';
+      document.getElementById('cfTime').textContent = res.room.time + ' phút';
+      
+      showPage('confirm');
+      return;
+      
+    } catch(err) {
+      document.querySelector('.btn-login').textContent = '🚀 Vào phòng thi';
+      document.querySelector('.btn-login').disabled = false;
+      errEl.textContent = 'Lỗi kết nối: ' + err.message;
+      errEl.style.display = 'block';
+      return;
+    }
+  }
+
+  // ====== CHẾ ĐỘ LOCAL (cùng máy) ======
+  let db;
+  try { db = JSON.parse(localStorage.getItem('oly_db')); } catch(e) {}
+  if (!db) {
+    errEl.textContent = 'Không tìm thấy dữ liệu phòng thi. Vui lòng liên hệ giáo viên.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const room = db.rooms.find(r => r.code === roomCode);
+  if (!room) {
+    errEl.textContent = 'Mã phòng thi "'+roomCode+'" không tồn tại!';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (room.status !== 'open') {
+    errEl.textContent = room.status === 'draft' ? 'Phòng thi chưa được mở. Vui lòng đợi giáo viên mở phòng.' : 'Phòng thi đã đóng.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // Find student
+  const student = db.students.find(s => s.roomId === room.id && s.sbd === sbd);
+  if (!student) {
+    errEl.textContent = 'SBD "'+sbd+'" không có trong phòng thi này!';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // Already submitted?
+  if (student.submitted) {
+    showPage('already');
+    return;
+  }
+
+  // Setup exam
+  EXAM.room = room;
+  EXAM.student = student;
+  EXAM.questions = room.shuffle ? shuffleArray([...room.questions]) : [...room.questions];
+  EXAM.timeLeft = room.time * 60;
+  EXAM.answers = {};
+
+  // Show confirm page
+  document.getElementById('cfName').textContent = student.name;
+  document.getElementById('cfSchool').textContent = student.school || '–';
+  document.getElementById('cfSBD').textContent = student.sbd;
+  document.getElementById('cfRoom').textContent = room.code + ' – ' + room.name;
+  document.getElementById('cfSubject').textContent = room.subject;
+  document.getElementById('cfQuestions').textContent = EXAM.questions.length + ' câu';
+  document.getElementById('cfTime').textContent = room.time + ' phút';
+  
+  showPage('confirm');
+}
+
+// ================================================================
+//  START EXAM
+// ================================================================
+function startExam() {
+  EXAM.started = true;
+  
+  // Show timer
+  document.getElementById('timerBar').style.display = 'flex';
+  document.getElementById('examSubject').textContent = EXAM.room.subject;
+  document.getElementById('examStudent').textContent = EXAM.student.name;
+  document.getElementById('totalCount').textContent = EXAM.questions.length;
+  document.getElementById('submitTotal').textContent = EXAM.questions.length;
+
+  // Render questions
+  renderExamQuestions();
+  renderQuestionNav();
+  updateProgress();
+
+  // Start timer
+  updateTimerDisplay();
+  EXAM.timerId = setInterval(() => {
+    EXAM.timeLeft--;
+    updateTimerDisplay();
+    if (EXAM.timeLeft <= 0) {
+      clearInterval(EXAM.timerId);
+      autoSubmit();
+    }
+  }, 1000);
+
+  showPage('exam');
+  window.scrollTo(0,0);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(EXAM.timeLeft / 60);
+  const s = EXAM.timeLeft % 60;
+  const display = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  const el = document.getElementById('timerDisplay');
+  el.textContent = display;
+  el.className = 'timer';
+  if (EXAM.timeLeft <= 60) el.classList.add('danger');
+  else if (EXAM.timeLeft <= 300) el.classList.add('warning');
+}
+
+// ================================================================
+//  RENDER EXAM
+// ================================================================
+function renderExamQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = EXAM.questions.map((q, i) => {
+    const answered = EXAM.answers[i] !== undefined;
+    let ansHTML = '';
+
+    if (q.type === 'Một lựa chọn' || q.type === 'Nhiều lựa chọn') {
+      const opts = parseAnswerOptions(q.answers);
+      ansHTML = opts.map((opt, j) => {
+        const letter = opt.letter;
+        const sel = q.type === 'Nhiều lựa chọn'
+          ? (EXAM.answers[i]||[]).includes(letter)
+          : EXAM.answers[i] === letter;
+        return `<div class="answer-option ${sel?'selected':''}" onclick="selectAnswer(${i},'${letter}','${q.type}')">
+          <div class="opt-circle">${letter}</div>
+          <div class="opt-text">${esc(opt.text)}</div>
+        </div>`;
+      }).join('');
+    } else if (q.type === 'Đúng/Sai') {
+      const selA = EXAM.answers[i] === 'A';
+      const selB = EXAM.answers[i] === 'B';
+      ansHTML = `<div class="tf-group">
+        <button class="tf-btn ${selA?'selected':''}" onclick="selectAnswer(${i},'A','Đúng/Sai')">✅ Đúng</button>
+        <button class="tf-btn ${selB?'selected':''}" onclick="selectAnswer(${i},'B','Đúng/Sai')">❌ Sai</button>
+      </div>`;
+    } else if (q.type === 'Điền khuyết') {
+      const placeholders = (q.content.match(/\{[a-z]\}/g) || ['{a}']);
+      ansHTML = placeholders.map((ph, pi) => {
+        const key = ph.replace(/[{}]/g, '');
+        const val = (EXAM.answers[i]||{})[key] || '';
+        return `<div style="margin-bottom:8px;">
+          <label style="font-size:0.78rem;color:var(--text-light);margin-bottom:4px;display:block;">Vị trí ${ph}:</label>
+          <input class="fill-input" type="text" value="${esc(val)}" oninput="fillAnswer(${i},'${key}',this.value)" placeholder="Nhập đáp án...">
+        </div>`;
+      }).join('');
+    } else {
+      ansHTML = `<textarea class="fill-input" style="min-height:80px;text-align:left;" oninput="fillFree(${i},this.value)" placeholder="Nhập câu trả lời...">${esc(EXAM.answers[i]||'')}</textarea>`;
+    }
+
+    const pointDisplay = q.point ? ` (${q.point} điểm)` : '';
+
+    return `<div class="q-card ${answered?'answered':''}" id="qcard-${i}">
+      <div class="q-card-head">
+        <div class="q-card-num">${i+1}</div>
+        <div class="q-info"><strong>${q.type}</strong>${pointDisplay}</div>
+        <div class="q-status ${answered?'done':'undone'}">${answered?'✅ Đã trả lời':'⏳ Chưa trả lời'}</div>
+      </div>
+      <div class="q-card-body">
+        <div class="q-text">${formatContent(q.content)}</div>
+        ${ansHTML}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function formatContent(text) {
+  // Replace {a}, {b} etc with blanks for display
+  return esc(text).replace(/\{([a-z])\}/g, '<span style="display:inline-block;min-width:80px;border-bottom:2px solid var(--navy);text-align:center;margin:0 4px;padding:0 8px;">___</span>');
+}
+
+function parseAnswerOptions(ansStr) {
+  if (!ansStr) return [];
+  return ansStr.split('\n').filter(l=>l.trim()).map(line => {
+    const match = line.match(/^([A-Z])\.\s*(.*)/);
+    return match ? { letter: match[1], text: match[2] } : { letter: '?', text: line };
+  });
+}
+
+// ================================================================
+//  ANSWER HANDLING
+// ================================================================
+function selectAnswer(qIdx, letter, type) {
+  if (type === 'Nhiều lựa chọn') {
+    if (!EXAM.answers[qIdx]) EXAM.answers[qIdx] = [];
+    const arr = EXAM.answers[qIdx];
+    const idx = arr.indexOf(letter);
+    if (idx >= 0) arr.splice(idx,1);
+    else arr.push(letter);
+    if (!arr.length) delete EXAM.answers[qIdx];
+  } else {
+    EXAM.answers[qIdx] = letter;
+  }
+  renderExamQuestions();
+  renderQuestionNav();
+  updateProgress();
+}
+
+function fillAnswer(qIdx, key, val) {
+  if (!EXAM.answers[qIdx]) EXAM.answers[qIdx] = {};
+  EXAM.answers[qIdx][key] = val.trim();
+  // Check if any value is non-empty
+  const hasValue = Object.values(EXAM.answers[qIdx]).some(v => v);
+  if (!hasValue) delete EXAM.answers[qIdx];
+  renderQuestionNav();
+  updateProgress();
+}
+
+function fillFree(qIdx, val) {
+  if (val.trim()) EXAM.answers[qIdx] = val.trim();
+  else delete EXAM.answers[qIdx];
+  renderQuestionNav();
+  updateProgress();
+}
+
+// ================================================================
+//  NAVIGATION
+// ================================================================
+function renderQuestionNav() {
+  const nav = document.getElementById('qNav');
+  nav.innerHTML = EXAM.questions.map((q,i) => {
+    const answered = EXAM.answers[i] !== undefined;
+    return `<button class="q-nav-btn ${answered?'answered':''}" onclick="scrollToQ(${i})">${i+1}</button>`;
+  }).join('');
+}
+
+function scrollToQ(i) {
+  document.getElementById('qcard-'+i).scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function updateProgress() {
+  const total = EXAM.questions.length;
+  const done = Object.keys(EXAM.answers).length;
+  document.getElementById('answeredCount').textContent = done;
+  document.getElementById('submitCount').textContent = done;
+  document.getElementById('progressFill').style.width = (done/total*100)+'%';
+}
+
+// ================================================================
+//  SUBMIT
+// ================================================================
+function confirmSubmit() {
+  const total = EXAM.questions.length;
+  const done = Object.keys(EXAM.answers).length;
+  const unanswered = total - done;
+  let msg = '📤 Nộp bài thi?\n\n';
+  msg += `Đã trả lời: ${done}/${total} câu.`;
+  if (unanswered > 0) msg += `\n⚠️ Còn ${unanswered} câu chưa trả lời!`;
+  msg += '\n\nSau khi nộp, bạn không thể sửa bài.';
+  if (confirm(msg)) submitExam();
+}
+
+function autoSubmit() {
+  alert('⏰ Hết thời gian! Bài thi sẽ được nộp tự động.');
+  submitExam();
+}
+
+function submitExam() {
+  if (EXAM.submitted) return;
+  EXAM.submitted = true;
+  clearInterval(EXAM.timerId);
+
+  // Grade the exam
+  let totalPoints = 0;
+  let earnedPoints = 0;
+
+  EXAM.questions.forEach((q, i) => {
+    const pts = q.point || 1;
+    totalPoints += pts;
+    const userAns = EXAM.answers[i];
+    const correctAns = q.correct;
+
+    if (!userAns || !correctAns) return;
+
+    if (q.type === 'Một lựa chọn' || q.type === 'Đúng/Sai') {
+      if (userAns === correctAns.trim().toUpperCase()) earnedPoints += pts;
+    } else if (q.type === 'Nhiều lựa chọn') {
+      const correctSet = correctAns.split(',').map(s=>s.trim().toUpperCase()).sort();
+      const userSet = (userAns||[]).sort();
+      if (JSON.stringify(correctSet) === JSON.stringify(userSet)) earnedPoints += pts;
+    } else if (q.type === 'Điền khuyết') {
+      // Parse correct: "A.30" or "A.Thái Sơn"
+      const correctParts = correctAns.split('\n').filter(l=>l.trim());
+      let allCorrect = true;
+      correctParts.forEach(part => {
+        const m = part.match(/^([A-Z])\.(.+)/);
+        if (m && userAns) {
+          const key = m[1].toLowerCase();
+          const expected = m[2].trim().toLowerCase();
+          const given = (userAns[key]||'').toLowerCase().trim();
+          if (given !== expected) allCorrect = false;
+        }
+      });
+      if (allCorrect && Object.keys(userAns||{}).length > 0) earnedPoints += pts;
+    }
+  });
+
+  // Scale to maxScore
+  const maxScore = EXAM.room.maxScore || 100;
+  const finalScore = totalPoints > 0 ? Math.round(earnedPoints / totalPoints * maxScore * 10) / 10 : 0;
+
+  // Save result to GAS backend (hoặc localStorage)
+  if (useGAS()) {
+    gasCall('submitExam', {
+      roomCode: EXAM.room.code,
+      sbd: EXAM.student.sbd,
+      score: finalScore,
+      answers: EXAM.answers
+    }).then(res => {
+      if (res && res.success) {
+        console.log('✅ Đã lưu kết quả lên Google Sheets');
+      } else {
+        console.error('❌ Lỗi lưu GAS:', res);
+        // Fallback save to localStorage
+        saveToLocalStorage(finalScore);
+      }
+    }).catch(err => {
+      console.error('❌ GAS Error:', err);
+      saveToLocalStorage(finalScore);
+    });
+  } else {
+    saveToLocalStorage(finalScore);
+  }
+  
+  function saveToLocalStorage(score) {
+    try {
+      const db = JSON.parse(localStorage.getItem('oly_db'));
+      if (db) {
+        const stu = db.students.find(s => (s.roomId === EXAM.room.id || s.roomCode === EXAM.room.code) && s.sbd === EXAM.student.sbd);
+        if (stu) {
+          stu.submitted = true;
+          stu.score = score;
+          stu.submitTime = new Date().toLocaleString('vi-VN');
+          stu.answers = EXAM.answers;
+        }
+        localStorage.setItem('oly_db', JSON.stringify(db));
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  // Show result
+  const answeredCount = Object.keys(EXAM.answers).length;
+  const resultHTML = `
+    <div style="font-size:2rem;margin-bottom:8px;">🎉</div>
+    <h2 style="color:#0D7C3E;margin-bottom:4px;">Nộp bài thành công!</h2>
+    <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:20px;">${EXAM.room.subject} • ${EXAM.room.name}</p>
+    ${EXAM.room.showResult ? `
+    <div class="score-circle">
+      <div class="score-num">${finalScore}</div>
+      <div class="score-label">/ ${maxScore} điểm</div>
+    </div>
+    <div style="margin-top:16px;font-size:0.88rem;">
+      <p>Đã trả lời: <strong>${answeredCount}/${EXAM.questions.length}</strong> câu</p>
+      <p>Số điểm đạt: <strong>${earnedPoints.toFixed(1)}/${totalPoints}</strong> (quy đổi: ${finalScore}/${maxScore})</p>
+    </div>
+    ` : `
+    <div style="background:#E8F8F0;border-radius:var(--radius-sm);padding:16px;margin-top:12px;">
+      <p style="font-size:0.88rem;">Bài thi của bạn đã được ghi nhận.<br>Kết quả sẽ do giáo viên công bố sau.</p>
+    </div>
+    `}
+    <p style="margin-top:20px;font-size:0.78rem;color:var(--text-light);">Cảm ơn bạn đã tham gia Olympic Tiếng Việt – Toán Tuổi Thơ 2026! 🏆</p>
+  `;
+  document.getElementById('resultCard').innerHTML = resultHTML;
+  document.getElementById('timerBar').style.display = 'none';
+  showPage('result');
+
+  // Confetti effect
+  if (EXAM.room.showResult && finalScore >= 50) launchConfetti();
+}
+
+// ================================================================
+//  UTILITIES
+// ================================================================
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+}
+
+function esc(s) { return s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : ''; }
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function launchConfetti() {
+  const colors = ['#0D7C3E','#10A04E','#34D399','#6EE7B7','#F4D35E','#5DADE2'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random()*100+'%';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    el.style.width = (Math.random()*8+4)+'px';
+    el.style.height = (Math.random()*8+4)+'px';
+    el.style.borderRadius = Math.random()>0.5?'50%':'2px';
+    document.body.appendChild(el);
+    const dur = Math.random()*2+1.5;
+    const delay = Math.random()*0.5;
+    el.animate([
+      {top:'-20px', opacity:1, transform:'rotate(0deg) translateX(0)'},
+      {top:'100vh', opacity:0, transform:`rotate(${Math.random()*720-360}deg) translateX(${Math.random()*200-100}px)`}
+    ], { duration: dur*1000, delay: delay*1000, fill:'forwards' });
+    setTimeout(() => el.remove(), (dur+delay)*1000+100);
+  }
+}
+
+// Prevent accidental navigation
+window.addEventListener('beforeunload', function(e) {
+  if (EXAM.started && !EXAM.submitted) {
+    e.preventDefault();
+    e.returnValue = 'Bạn đang làm bài thi! Nếu rời trang, bài thi có thể bị mất.';
+  }
+});
+</script>
+
+<div style="text-align:center;padding:20px;font-size:0.72rem;color:var(--text-light);">
+  Thiết kế: Chung Trần • Olympic Tiếng Việt – Toán Tuổi Thơ 2026
+</div>
+
+</body>
+</html>
