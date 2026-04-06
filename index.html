@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Tiếng Việt - Toán Tuổi Thơ | Thi Online</title>
+    <title>OLYMPIC | Tiếng Việt - Toán Tuổi Thơ 2026</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
@@ -493,6 +493,39 @@
             user-select: none;
         }
 
+        /* Phân số dạng tử số / mẫu số */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 3px;
+            font-size: 0.85em;
+            line-height: 1.2;
+        }
+        .frac .num {
+            border-bottom: 1.5px solid #333;
+            padding: 0 4px 2px;
+            min-width: 1.2em;
+            text-align: center;
+        }
+        .frac .den {
+            padding: 2px 4px 0;
+            min-width: 1.2em;
+            text-align: center;
+        }
+        /* Hỗn số: số nguyên + phân số */
+        .mixed {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 3px;
+        }
+        .mixed .whole {
+            font-size: 1em;
+            margin-right: 2px;
+        }
+
         .question-type {
             display: inline-block;
             background: #E8F5E9;
@@ -947,7 +980,7 @@
             <div class="login-card">
                 <div class="login-header">
                     <div class="login-icon">🏆</div>
-                    <h1 class="login-title">Olympic Thi Online</h1>
+                    <h1 class="login-title" style="font-size:2rem;letter-spacing:1px;">OLYMPIC</h1>
                     <p class="login-subtitle">Tiếng Việt & Toán Tuổi Thơ 2026</p>
                 </div>
 
@@ -956,7 +989,7 @@
                 <form id="loginForm">
                     <div class="form-group">
                         <label for="roomCode">Mã Phòng Thi</label>
-                        <input type="text" id="roomCode" placeholder="VD: OLY-A1B2" required>
+                        <input type="text" id="roomCode" placeholder="VD: OLYMPIC-2468" required style="text-transform:uppercase;letter-spacing:2px;font-weight:600;font-size:18px;">
                     </div>
 
                     <div class="form-group">
@@ -971,16 +1004,17 @@
                     </button>
                 </form>
             </div>
+            <div style="position:fixed;bottom:12px;left:0;right:0;text-align:center;font-size:0.72rem;color:rgba(0,0,0,0.3);">@2026 ChungTran - 0913 031 073</div>
         </div>
 
         <!-- CONFIRM PAGE -->
         <div id="confirmPage" class="page">
             <div class="confirm-card">
-                <h1 class="confirm-title">Xac Nhan Thong Tin</h1>
+                <h1 class="confirm-title">Xác Nhận Thông Tin</h1>
 
                 <div class="info-grid">
                     <div class="info-item">
-                        <div class="info-label">Ho Ten</div>
+                        <div class="info-label">Họ Tên</div>
                         <div class="info-value" id="confirmName">-</div>
                     </div>
                     <div class="info-item">
@@ -988,31 +1022,31 @@
                         <div class="info-value" id="confirmSBD">-</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Truong</div>
+                        <div class="info-label">Trường</div>
                         <div class="info-value" id="confirmSchool">-</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Phong Thi</div>
+                        <div class="info-label">Phòng Thi</div>
                         <div class="info-value" id="confirmRoom">-</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Mon Thi</div>
+                        <div class="info-label">Môn Thi</div>
                         <div class="info-value" id="confirmSubject">-</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Thoi Gian Thi</div>
+                        <div class="info-label">Thời Gian Thi</div>
                         <div class="info-value" id="confirmTime">-</div>
                     </div>
                 </div>
 
                 <div class="warning-box">
                     <span class="warning-icon">!</span>
-                    <span class="warning-text">Khi bam "Bat Dau", dong ho se bat dau dem. Het gio se tu dong nop bai. <strong>Chi duoc thi 1 lan!</strong></span>
+                    <span class="warning-text">Khi bấm "Bắt Đầu", đồng hồ sẽ bắt đầu đếm. Hết giờ sẽ tự động nộp bài. <strong>Chỉ được thi 1 lần!</strong></span>
                 </div>
 
                 <div class="confirm-buttons">
-                    <button class="btn-secondary" onclick="goBackToLogin()">Quay Lai</button>
-                    <button class="btn-primary" id="startExamBtn">Bat Dau Lam Bai</button>
+                    <button class="btn-secondary" onclick="goBackToLogin()">Quay Lại</button>
+                    <button class="btn-primary" id="startExamBtn">Bắt Đầu Làm Bài</button>
                 </div>
             </div>
         </div>
@@ -1026,7 +1060,7 @@
                 </div>
                 <div class="timer-display" id="timerDisplay">00:00</div>
                 <div class="progress-info">
-                    <div class="progress-label">Hoan Thanh: <span class="submit-count" id="answeredCount">0</span>/<span id="totalCount">0</span></div>
+                    <div class="progress-label">Hoàn Thành: <span class="submit-count" id="answeredCount">0</span>/<span id="totalCount">0</span></div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
                     </div>
@@ -1040,9 +1074,9 @@
 
             <div class="submit-section">
                 <div class="submit-info">
-                    Cau tra loi: <span class="submit-count" id="submitCount">0</span> / <span id="totalSubmit">0</span>
+                    Câu trả lời: <span class="submit-count" id="submitCount">0</span> / <span id="totalSubmit">0</span>
                 </div>
-                <button class="btn-submit" id="submitBtn">Nop Bai Thi</button>
+                <button class="btn-submit" id="submitBtn">Nộp Bài Thi</button>
             </div>
         </div>
 
@@ -1051,7 +1085,7 @@
             <div class="result-card">
                 <div class="score-circle">
                     <div class="score-inner">
-                        <div class="score-label">Diem So</div>
+                        <div class="score-label">Điểm số</div>
                         <div class="score-number" id="scoreNumber">0</div>
                     </div>
                 </div>
@@ -1060,15 +1094,15 @@
 
                 <div class="result-details" id="resultDetails">
                     <div class="detail-row">
-                        <span class="detail-label">Tong Cau Hoi</span>
+                        <span class="detail-label">Tổng Câu Hỏi</span>
                         <span class="detail-value" id="detailTotal">0</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Tra Loi Dung</span>
+                        <span class="detail-label">Trả Lời Đúng</span>
                         <span class="detail-value" id="detailCorrect">0</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Tra Loi Sai</span>
+                        <span class="detail-label">Trả Lời Sai</span>
                         <span class="detail-value" id="detailIncorrect">0</span>
                     </div>
                     <div class="detail-row">
@@ -1087,42 +1121,32 @@
     <!-- MODALS -->
     <div id="submitModal" class="modal-overlay">
         <div class="modal-content">
-            <h2 class="modal-title">Xac Nhan Nop Bai</h2>
-            <p class="modal-text">Ban co <span id="unansweredCountModal">0</span> cau chua tra loi.<br>Ban co chac muon nop bai khong?</p>
+            <h2 class="modal-title">Xác Nhận Nộp Bài</h2>
+            <p class="modal-text">Bạn còn <span id="unansweredCountModal">0</span> câu chưa trả lời.<br>Bạn có chắc muốn nộp bài không?</p>
             <div class="modal-buttons">
                 <button class="modal-btn-cancel" onclick="closeSubmitModal()">Tiep Tuc Lam Bai</button>
-                <button class="modal-btn-confirm" onclick="confirmSubmit()">Nop Bai Ngay</button>
+                <button class="modal-btn-confirm" onclick="confirmSubmit()">Nộp Bài Ngay</button>
             </div>
         </div>
     </div>
 
     <div id="tabWarning" class="tab-warning">
         <div class="tab-warning-icon">!</div>
-        <div class="tab-warning-text">Ban da chuyen tab!</div>
-        <div class="tab-warning-count">Lan vi pham: <span id="violationCount">1</span>/3</div>
-        <div class="tab-warning-text" style="font-size: 16px; color: #ccc;">Quay lai thi ngay</div>
+        <div class="tab-warning-text">Bạn đã chuyển tab!</div>
+        <div class="tab-warning-count">Lần vi phạm: <span id="violationCount">1</span>/3</div>
+        <div class="tab-warning-text" style="font-size: 16px; color: #ccc;">Quay lại thi ngay! Sau 3 lần sẽ tự nộp bài.</div>
     </div>
 
     <script>
         /* ===== CONFIGURATION ===== */
-        // ▼▼▼ QUẢN TRỊ: Dán cùng URL GAS như file giaovien.html ▼▼▼
-        const GAS_URL = 'YOUR_GAS_URL_HERE';
-        // ▲▲▲ ▲▲▲
-        const USE_GAS = GAS_URL !== 'YOUR_GAS_URL_HERE';
-
-        /* ===== LẤY SCHOOL ID TỪ URL ===== */
-        // GV chia sẻ link dạng: hocsinh.html?school=SCHOOL_ID
-        // Hoặc để trống nếu dùng offline
-        function getSchoolIdFromURL() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('school') || '';
-        }
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbwqu3i-RmyvKeH664yd_x1N_ZojGwmsC3kz61QjzLAlRdVKSMfWEVkdsp23Mv2_Re5DYQ/exec';
+        const USE_GAS = GAS_URL && GAS_URL.length > 10 && !GAS_URL.includes('YOUR_GAS');
 
         /* ===== STATE ===== */
         const state = {
             currentPage: 'login',
             deviceId: getDeviceId(),
-            schoolId: getSchoolIdFromURL(),
+            schoolId: '',
             roomCode: null,
             studentId: null,
             studentInfo: null,
@@ -1151,27 +1175,31 @@
         }
 
         async function gasCall(action, data, params) {
-            if (USE_GAS && state.schoolId) {
+            if (USE_GAS) {
                 try {
-                    let url = GAS_URL + '?action=' + action + '&schoolId=' + encodeURIComponent(state.schoolId);
-                    if (params) {
-                        Object.keys(params).forEach(k => {
-                            url += '&' + k + '=' + encodeURIComponent(params[k]);
-                        });
-                    }
                     if (data) {
-                        data.schoolId = state.schoolId; // Gắn schoolId vào body
+                        // POST: action phải nằm trong body (GAS doPost đọc body.action)
+                        data.action = action;
+                        const res = await fetch(GAS_URL, {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: { 'Content-Type': 'text/plain' }
+                        });
+                        return await res.json();
+                    } else {
+                        // GET: action nằm trong query string
+                        let url = GAS_URL + '?action=' + encodeURIComponent(action);
+                        if (params) {
+                            Object.keys(params).forEach(k => {
+                                url += '&' + k + '=' + encodeURIComponent(params[k]);
+                            });
+                        }
+                        const res = await fetch(url, { method: 'GET' });
+                        return await res.json();
                     }
-                    const opts = data ? {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: { 'Content-Type': 'text/plain' }
-                    } : { method: 'GET' };
-                    const res = await fetch(url, opts);
-                    return await res.json();
                 } catch (err) {
                     console.error('GAS API error:', err);
-                    return { error: 'Loi ket noi server' };
+                    return { error: 'Lỗi kết nối server' };
                 }
             } else {
                 return localStorageCall(action, data, params);
@@ -1181,37 +1209,52 @@
         function localStorageCall(action, data, params) {
             const db = JSON.parse(localStorage.getItem('oly_db') || '{}');
 
+            // Tìm phòng thi linh hoạt: khớp chính xác key UPPERCASE, hoặc tìm theo tên
+            function findRoom(code) {
+                if (!db.rooms) return null;
+                const upper = code.toUpperCase().trim();
+                // Tìm khớp chính xác key
+                if (db.rooms[upper]) return db.rooms[upper];
+                // Tìm theo tên phòng (so sánh uppercase)
+                for (const key of Object.keys(db.rooms)) {
+                    const r = db.rooms[key];
+                    if (r.name && r.name.toUpperCase().trim() === upper) return r;
+                }
+                return null;
+            }
+
             if (action === 'login') {
-                const roomCode = params.roomCode.toUpperCase();
-                const studentId = params.studentId;
-                const room = db.rooms?.[roomCode];
+                const room = findRoom(params.roomCode);
+                const studentId = params.studentId?.trim();
 
                 if (!room) {
-                    return { error: 'Ma phong thi khong ton tai' };
+                    return { error: 'Mã phòng thi không tồn tại! Kiểm tra lại tên phòng.' };
                 }
 
-                const student = room.students?.find(s => s.sbd === studentId);
+                const student = room.students?.find(s =>
+                    s.sbd === studentId || s.sbd?.toUpperCase() === studentId?.toUpperCase()
+                );
                 if (!student) {
-                    return { error: 'So bao danh khong ton tai' };
+                    return { error: 'Số báo danh không tồn tại trong phòng thi này.' };
                 }
 
                 return { success: true, student, room };
             }
 
             if (action === 'getQuestions') {
-                const roomCode = params.roomCode.toUpperCase();
-                const room = db.rooms?.[roomCode];
-                if (!room || !room.questions) {
-                    return { error: 'Khong co cau hoi' };
+                const room = findRoom(params.roomCode);
+                if (!room || !room.questions || room.questions.length === 0) {
+                    return { error: 'Chưa có câu hỏi trong phòng thi này.' };
                 }
                 return { success: true, questions: room.questions };
             }
 
-            if (action === 'submit') {
-                return { success: true, score: 85, totalQuestions: 20, correctAnswers: 17, incorrectAnswers: 2, unansweredCount: 1, result: data };
+            if (action === 'submitExam' || action === 'submit') {
+                // Offline: trả về success, điểm sẽ được tính client-side
+                return { success: true };
             }
 
-            return { error: 'Khong tim thay du lieu' };
+            return { error: 'Không tìm thấy dữ liệu.' };
         }
 
         function showPage(pageName) {
@@ -1266,24 +1309,36 @@
             const btn = e.target.querySelector('button');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<span class="button-content"><div class="spinner"></div><span>Dang dang nhap...</span></span>';
+            btn.innerHTML = '<span class="button-content"><div class="spinner"></div><span>Đang đăng nhập...</span></span>';
 
             try {
-                const res = await gasCall('login', null, {
-                    roomCode: state.roomCode,
-                    studentId: state.studentId,
-                    deviceId: state.deviceId
-                });
+                let res;
+                if (USE_GAS) {
+                    // Đăng nhập qua GAS bằng mã phòng
+                    res = await gasCall('studentLoginByCode', {
+                        roomCode: state.roomCode,
+                        sbd: state.studentId,
+                        deviceId: state.deviceId
+                    });
+                } else {
+                    // Fallback offline
+                    res = localStorageCall('login', null, {
+                        roomCode: state.roomCode,
+                        studentId: state.studentId
+                    });
+                }
 
                 if (res.error) {
                     showError(res.error);
                 } else {
                     state.studentInfo = res.student;
                     state.room = res.room;
+                    if (res.schoolId) state.schoolId = res.schoolId;
+                    if (res.questions) state.questions = normalizeQuestions(res.questions);
                     showConfirmPage();
                 }
             } catch (err) {
-                showError('Loi dang nhap: ' + err.message);
+                showError('Lỗi đăng nhập: ' + err.message);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
@@ -1301,39 +1356,84 @@
             document.getElementById('confirmName').textContent = state.studentInfo.name;
             document.getElementById('confirmSBD').textContent = state.studentInfo.sbd;
             document.getElementById('confirmSchool').textContent = state.studentInfo.school || '-';
-            document.getElementById('confirmRoom').textContent = state.room.name;
-            document.getElementById('confirmSubject').textContent = state.room.subject;
-            document.getElementById('confirmTime').textContent = state.room.timeLimit + ' phut';
+            document.getElementById('confirmRoom').textContent = state.room.name || state.roomCode;
+            document.getElementById('confirmSubject').textContent = state.room.subject || '-';
+            const timeMin = state.room.time || state.room.timeLimit || 40;
+            document.getElementById('confirmTime').textContent = timeMin + ' phút';
 
             showPage('confirm');
         }
 
         document.getElementById('startExamBtn').addEventListener('click', async () => {
             try {
-                const res = await gasCall('getQuestions', null, {
-                    roomCode: state.roomCode
-                });
+                // Nếu chưa có questions từ login response → gọi API
+                if (!state.questions || !state.questions.length) {
+                    const res = await gasCall('getExamByCode', null, {
+                        roomCode: state.roomCode,
+                        sbd: state.studentId
+                    });
+                    if (res.error) {
+                        alert('Lỗi: ' + res.error);
+                        return;
+                    }
+                    state.questions = normalizeQuestions(res.questions || []);
+                }
 
-                if (res.error) {
-                    alert('Loi: ' + res.error);
+                if (!state.questions.length) {
+                    alert('Chưa có câu hỏi trong phòng thi này.');
                     return;
                 }
 
-                state.questions = res.questions;
-                state.totalTime = state.room.timeLimit * 60;
+                const timeMin = state.room.time || state.room.timeLimit || 40;
+                state.totalTime = timeMin * 60;
                 state.timeRemaining = state.totalTime;
                 state.examStarted = true;
 
                 restoreAnswers();
-
                 showExamPage();
                 startTimer();
             } catch (err) {
-                alert('Loi: ' + err.message);
+                alert('Lỗi: ' + err.message);
             }
         });
 
         /* ===== EXAM PAGE ===== */
+
+        // Chuyển đổi câu hỏi từ GAS format sang format hocsinh.html hiểu
+        function normalizeQuestions(questions) {
+            return questions.map(q => {
+                // Map type: GAS dùng 1l/ds/dk/nl/tl/chu → hocsinh dùng single/truefalse/fill/multiple/essay
+                const typeMap = { '1l': 'single', 'ds': 'truefalse', 'dk': 'fill', 'nl': 'multiple', 'tl': 'essay', 'chu': 'single' };
+                const mappedType = typeMap[q.type] || q.type || 'single';
+
+                // Parse answers: có thể là string "A\nB\nC\nD" hoặc JSON string hoặc array
+                let options = [];
+                let rawAnswers = q.answers || q.options || '';
+                if (typeof rawAnswers === 'string') {
+                    try { rawAnswers = JSON.parse(rawAnswers); } catch(e) {}
+                }
+                if (Array.isArray(rawAnswers)) {
+                    options = rawAnswers;
+                } else if (typeof rawAnswers === 'string' && rawAnswers.trim()) {
+                    options = rawAnswers.split('\n').map(s => s.trim()).filter(Boolean);
+                }
+
+                // Parse correct answer
+                let correct = q.correct || '';
+                if (typeof correct === 'string') {
+                    try { correct = JSON.parse(correct); } catch(e) {}
+                }
+
+                return {
+                    ...q,
+                    text: q.content || q.text || '',
+                    type: mappedType,
+                    options: options,
+                    correct: correct,
+                    point: q.point || 1
+                };
+            });
+        }
 
         function showExamPage() {
             showPage('exam');
@@ -1367,7 +1467,7 @@
                 card.id = 'question-' + i;
 
                 let html = `
-                    <div class="question-number">Cau ${i + 1}/${state.questions.length}</div>
+                    <div class="question-number">Câu ${i + 1}/${state.questions.length}</div>
                     <span class="question-type">${getQuestionTypeLabel(q.type)}</span>
                     <div class="question-text">${q.text}</div>
                 `;
@@ -1412,7 +1512,7 @@
                             <input type="radio" name="q${i}" value="true"
                                 ${selected === 'true' ? 'checked' : ''}
                                 onchange="selectAnswer(${i}, 'truefalse', 'true')">
-                            <span class="option-text">Dung</span>
+                            <span class="option-text">Đúng</span>
                         </label>
                         <label class="option ${selected === 'false' ? 'selected' : ''}">
                             <input type="radio" name="q${i}" value="false"
@@ -1426,7 +1526,7 @@
                     const key = 'q' + i + '_a';
                     const value = state.answers[key] || '';
                     html += `
-                        <input type="text" class="text-input" placeholder="Nhap cau tra loi..."
+                        <input type="text" class="text-input" placeholder="Nhập câu trả lời..."
                             value="${value}"
                             onchange="selectAnswer(${i}, 'fill', this.value)">
                     `;
@@ -1434,7 +1534,7 @@
                     const key = 'q' + i + '_a';
                     const value = state.answers[key] || '';
                     html += `
-                        <textarea class="textarea" placeholder="Viet cau tra loi cua em..."
+                        <textarea class="textarea" placeholder="Viết câu trả lời của em..."
                             onchange="selectAnswer(${i}, 'essay', this.value)">${value}</textarea>
                     `;
                 }
@@ -1446,11 +1546,17 @@
 
         function getQuestionTypeLabel(type) {
             const labels = {
-                'single': 'Mot lua chon',
-                'multiple': 'Nhieu lua chon',
-                'truefalse': 'Dung/Sai',
-                'fill': 'Dien khuyct',
-                'essay': 'Cau tu luan'
+                'single': 'Một lựa chọn',
+                'multiple': 'Nhiều lựa chọn',
+                'truefalse': 'Đúng/Sai',
+                'fill': 'Điền khuyết',
+                'essay': 'Tự luận',
+                '1l': 'Một lựa chọn',
+                'nl': 'Nhiều lựa chọn',
+                'ds': 'Đúng/Sai',
+                'dk': 'Điền khuyết',
+                'tl': 'Tự luận',
+                'chu': 'Câu hỏi chùm'
             };
             return labels[type] || type;
         }
@@ -1618,25 +1724,108 @@
             }
         }
 
+        // Chấm điểm tự động phía client
+        function gradeExam() {
+            let score = 0;
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unanswered = 0;
+
+            state.questions.forEach((q, i) => {
+                const key = 'q' + i + '_a';
+                const ans = state.answers[key];
+
+                // Kiểm tra chưa trả lời
+                if (ans === undefined || ans === null || ans === '' ||
+                    (Array.isArray(ans) && ans.length === 0)) {
+                    unanswered++;
+                    return;
+                }
+
+                let isCorrect = false;
+
+                if (q.type === 'single') {
+                    // ans là index (0,1,2,3), so sánh với đáp án đúng
+                    const selectedText = (q.options && q.options[ans]) ? q.options[ans] : '';
+                    // So sánh: bỏ HTML tags để so sánh thuần text
+                    const stripHtml = (s) => String(s).replace(/<[^>]*>/g, '').trim();
+                    const correctText = stripHtml(q.correct);
+                    const selectedStrip = stripHtml(selectedText);
+                    isCorrect = correctText === selectedStrip;
+                } else if (q.type === 'fill') {
+                    // So sánh giá trị điền vào
+                    const studentAns = String(ans).trim().replace(',', '.');
+                    const correctAns = String(q.correct).trim().replace(',', '.');
+                    isCorrect = studentAns === correctAns ||
+                                parseFloat(studentAns) === parseFloat(correctAns);
+                } else if (q.type === 'truefalse') {
+                    const correctLower = String(q.correct).toLowerCase().trim();
+                    const ansLower = String(ans).toLowerCase().trim();
+                    isCorrect = correctLower === ansLower ||
+                                (correctLower === 'đúng' && ansLower === 'true') ||
+                                (correctLower === 'sai' && ansLower === 'false');
+                } else if (q.type === 'multiple') {
+                    // ans là mảng indices
+                    const selected = Array.isArray(ans) ? ans.sort() : [];
+                    let correctIndices = [];
+                    if (Array.isArray(q.correct)) {
+                        correctIndices = q.correct.map(c => {
+                            const idx = q.options.findIndex(o => o === c);
+                            return idx;
+                        }).filter(x => x >= 0).sort();
+                    }
+                    isCorrect = JSON.stringify(selected) === JSON.stringify(correctIndices);
+                }
+                // essay: không chấm tự động
+
+                if (isCorrect) {
+                    score += (q.point || 1);
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            return { score, correctCount, incorrectCount, unanswered, total: state.questions.length };
+        }
+
         async function submitExam() {
             if (state.timerInterval) clearInterval(state.timerInterval);
 
+            // Chấm điểm trước khi nộp
+            const grade = gradeExam();
+
             try {
-                const res = await gasCall('submit', {
+                const res = await gasCall('submitExam', {
                     roomCode: state.roomCode,
-                    studentId: state.studentId,
+                    roomId: state.room ? state.room.id : '',
+                    studentId: state.studentInfo ? state.studentInfo.id : state.studentId,
+                    studentName: state.studentInfo ? state.studentInfo.name : '',
+                    school: state.studentInfo ? state.studentInfo.school : '',
+                    sbd: state.studentId,
+                    score: grade.score,
+                    maxScore: state.room ? state.room.maxScore : 100,
+                    timeSpent: state.totalTime - state.timeRemaining,
                     deviceId: state.deviceId,
                     answers: state.answers,
-                    timeUsed: state.totalTime - state.timeRemaining
+                    correctAnswers: grade.correctCount,
+                    incorrectAnswers: grade.incorrectCount,
+                    unansweredCount: grade.unanswered
                 });
 
                 if (res.error) {
-                    alert('Loi: ' + res.error);
+                    alert('Lỗi: ' + res.error);
                 } else {
+                    // Bổ sung thông tin chấm điểm vào kết quả
+                    res.score = grade.score;
+                    res.correctAnswers = grade.correctCount;
+                    res.incorrectAnswers = grade.incorrectCount;
+                    res.unansweredCount = grade.unanswered;
+                    res.totalQuestions = grade.total;
                     showResultPage(res);
                 }
             } catch (err) {
-                alert('Loi nop bai: ' + err.message);
+                alert('Lỗi nộp bài: ' + err.message);
             }
         }
 
@@ -1652,11 +1841,11 @@
                 document.getElementById('detailCorrect').textContent = result.correctAnswers || 0;
                 document.getElementById('detailIncorrect').textContent = result.incorrectAnswers || 0;
                 document.getElementById('detailUnanswered').textContent = result.unansweredCount || 0;
-                document.getElementById('resultMessage').textContent = 'Cam on em da tham gia!';
+                document.getElementById('resultMessage').textContent = 'Cảm ơn em đã tham gia!';
             } else {
                 document.getElementById('resultDetails').classList.remove('show');
-                document.getElementById('resultTitle').textContent = 'Bai Thi Da Duoc Ghi Nhan';
-                document.getElementById('resultMessage').textContent = 'Ket qua se duoc cong bo sau. Cam on em!';
+                document.getElementById('resultTitle').textContent = 'Bài thi đã được ghi nhận';
+                document.getElementById('resultMessage').textContent = 'Kết quả sẽ được công bố sau. Cảm ơn em!';
             }
 
             if (score >= 80) {
