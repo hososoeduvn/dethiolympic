@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLYMPIC | Tiếng Việt - Toán Tuổi Thơ 2026</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -116,7 +116,7 @@
         }
 
         .login-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 32px;
             color: #1565C0;
             margin-bottom: 10px;
@@ -228,7 +228,7 @@
         }
 
         .confirm-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 28px;
             color: #1565C0;
             margin-bottom: 25px;
@@ -656,8 +656,10 @@
         /* ===== RESULT PAGE ===== */
         #resultPage {
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            flex-direction: column;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .result-card {
@@ -694,7 +696,7 @@
         }
 
         .score-number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 60px;
             font-weight: 700;
             color: #1565C0;
@@ -708,7 +710,7 @@
         }
 
         .result-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 28px;
             color: #1565C0;
             margin-bottom: 20px;
@@ -772,6 +774,7 @@
             background: #e0e0e0;
         }
 
+
         /* ===== MODALS ===== */
         .modal-overlay {
             position: fixed;
@@ -802,7 +805,7 @@
         }
 
         .modal-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 24px;
             color: #1565C0;
             margin-bottom: 15px;
@@ -886,6 +889,290 @@
         .tab-warning-count {
             font-size: 18px;
             color: #FFD54F;
+        }
+
+        /* ===== SUMMARY PAGE ===== */
+        #summaryPage {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .summary-header {
+            background: white;
+            padding: 20px 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .summary-title {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 22px;
+            color: #1565C0;
+            margin-bottom: 8px;
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .summary-stats .stat-num {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .summary-stats .stat-ok { color: #1565C0; }
+        .summary-stats .stat-miss { color: #E74C3C; }
+
+        .summary-grid-wrap {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            background: #F5F7FA;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .summary-item:hover {
+            border-color: #1565C0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .summary-item.answered {
+            border-color: #1565C0;
+            background: #E8F5E9;
+        }
+
+        .summary-item.unanswered {
+            border-color: #FFCDD2;
+            background: #FFF8F8;
+        }
+
+        .summary-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .summary-item.answered .summary-num {
+            background: #1565C0;
+            color: white;
+        }
+
+        .summary-item.unanswered .summary-num {
+            background: #FFCDD2;
+            color: #C33;
+        }
+
+        .summary-text {
+            flex: 1;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .summary-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .summary-item.answered .summary-badge {
+            background: #C8E6C9;
+            color: #2E7D32;
+        }
+
+        .summary-item.unanswered .summary-badge {
+            background: #FFCDD2;
+            color: #C62828;
+        }
+
+        .summary-actions {
+            padding: 16px 24px;
+            background: white;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .summary-actions button {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .btn-back-exam {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-back-exam:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-final-submit {
+            background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
+            color: white;
+        }
+
+        .btn-final-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        /* ===== REVIEW MODE ===== */
+        .review-section {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .review-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .review-item.correct {
+            border-color: #66BB6A;
+            background: #F1F8E9;
+        }
+
+        .review-item.incorrect {
+            border-color: #EF5350;
+            background: #FFF3F3;
+        }
+
+        .review-item.skipped {
+            border-color: #BDBDBD;
+            background: #FAFAFA;
+        }
+
+        .review-q-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .review-q-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .review-item.correct .review-q-num { background: #43A047; }
+        .review-item.incorrect .review-q-num { background: #E53935; }
+        .review-item.skipped .review-q-num { background: #9E9E9E; }
+
+        .review-q-status {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        .review-item.correct .review-q-status { background: #C8E6C9; color: #2E7D32; }
+        .review-item.incorrect .review-q-status { background: #FFCDD2; color: #C62828; }
+        .review-item.skipped .review-q-status { background: #E0E0E0; color: #616161; }
+
+        .review-q-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .review-answer {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .review-answer.student-wrong {
+            background: #FFEBEE;
+            border: 1px solid #EF9A9A;
+            color: #C62828;
+        }
+
+        .review-answer.correct-ans {
+            background: #E8F5E9;
+            border: 1px solid #A5D6A7;
+            color: #2E7D32;
+        }
+
+        .review-answer.neutral {
+            background: #F5F5F5;
+            border: 1px solid #E0E0E0;
+            color: #616161;
+        }
+
+        .review-explain {
+            margin-top: 8px;
+            padding: 10px 14px;
+            background: #FFF8E1;
+            border-left: 3px solid #FFD54F;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            color: #5D4037;
+            line-height: 1.6;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1080,9 +1367,30 @@
             </div>
         </div>
 
+        <!-- SUMMARY PAGE (before final submit) -->
+        <div id="summaryPage" class="page">
+            <div class="summary-header">
+                <div class="summary-title">Tóm Tắt Bài Thi</div>
+                <div class="summary-subtitle">Kiểm tra lại trước khi nộp bài chính thức</div>
+                <div class="summary-stats">
+                    <span class="summary-stat answered" id="sumAnswered">0 đã trả lời</span>
+                    <span class="summary-stat unanswered" id="sumUnanswered">0 chưa trả lời</span>
+                    <span class="summary-stat flagged" id="sumFlagged">0 đánh dấu</span>
+                </div>
+            </div>
+            <div class="summary-body">
+                <div class="summary-grid" id="summaryGrid"></div>
+            </div>
+            <div class="summary-footer">
+                <button class="btn-back-exam" onclick="goBackFromSummary()">Quay Lại Làm Bài</button>
+                <button class="btn-final-submit" onclick="finalSubmit()">Nộp Bài Chính Thức</button>
+            </div>
+        </div>
+
         <!-- RESULT PAGE -->
         <div id="resultPage" class="page">
-            <div class="result-card">
+            <div style="width:100%;height:100%;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding:20px;">
+            <div class="result-card" style="margin-bottom:20px;">
                 <div class="score-circle">
                     <div class="score-inner">
                         <div class="score-label">Điểm số</div>
@@ -1090,7 +1398,7 @@
                     </div>
                 </div>
 
-                <h1 class="result-title" id="resultTitle">Bai Thi Da Duoc Ghi Nhan!</h1>
+                <h1 class="result-title" id="resultTitle">Bài Thi Đã Được Ghi Nhận!</h1>
 
                 <div class="result-details" id="resultDetails">
                     <div class="detail-row">
@@ -1106,14 +1414,20 @@
                         <span class="detail-value" id="detailIncorrect">0</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Khong Tra Loi</span>
+                        <span class="detail-label">Không Trả Lời</span>
                         <span class="detail-value" id="detailUnanswered">0</span>
                     </div>
                 </div>
 
-                <p class="result-message" id="resultMessage">Cam on em da tham gia!</p>
+                <p class="result-message" id="resultMessage">Cảm ơn em đã tham gia!</p>
 
-                <button class="btn-back" onclick="location.reload()">Ket Thuc</button>
+                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                    <button class="btn-back" onclick="location.reload()">Kết Thúc</button>
+                    <button class="btn-primary" id="reviewBtn" style="display:none;" onclick="toggleReviewMode()">Xem Lại Bài Làm</button>
+                </div>
+            </div>
+
+            <div class="review-container" id="reviewContainer" style="display:none;"></div>
             </div>
         </div>
     </div>
@@ -1124,7 +1438,7 @@
             <h2 class="modal-title">Xác Nhận Nộp Bài</h2>
             <p class="modal-text">Bạn còn <span id="unansweredCountModal">0</span> câu chưa trả lời.<br>Bạn có chắc muốn nộp bài không?</p>
             <div class="modal-buttons">
-                <button class="modal-btn-cancel" onclick="closeSubmitModal()">Tiep Tuc Lam Bai</button>
+                <button class="modal-btn-cancel" onclick="closeSubmitModal()">Tiếp Tục Làm Bài</button>
                 <button class="modal-btn-confirm" onclick="confirmSubmit()">Nộp Bài Ngay</button>
             </div>
         </div>
@@ -1160,7 +1474,8 @@
             submitted: false,
             timerInterval: null,
             tabViolations: 0,
-            lastSaveTime: 0
+            lastSaveTime: 0,
+            flagged: {}
         };
 
         /* ===== UTILITIES ===== */
@@ -1231,8 +1546,9 @@
                     return { error: 'Mã phòng thi không tồn tại! Kiểm tra lại tên phòng.' };
                 }
 
+                const normSBD = (s) => { let v = String(s||'').trim().toUpperCase(); if (/^\d+$/.test(v)) v = String(parseInt(v,10)); return v; };
                 const student = room.students?.find(s =>
-                    s.sbd === studentId || s.sbd?.toUpperCase() === studentId?.toUpperCase()
+                    normSBD(s.sbd) === normSBD(studentId)
                 );
                 if (!student) {
                     return { error: 'Số báo danh không tồn tại trong phòng thi này.' };
@@ -1467,6 +1783,7 @@
                 card.id = 'question-' + i;
 
                 let html = `
+                    <button class="flag-btn ${state.flagged[i] ? 'flagged' : ''}" onclick="toggleFlag(${i})" title="Đánh dấu câu này">&#9873;</button>
                     <div class="question-number">Câu ${i + 1}/${state.questions.length}</div>
                     <span class="question-type">${getQuestionTypeLabel(q.type)}</span>
                     <div class="question-text">${q.text}</div>
@@ -1615,6 +1932,7 @@
                 const key = 'q' + i + '_a';
                 const ans = state.answers[key];
                 const btn = document.querySelector('.nav-' + i);
+                if (!btn) return;
                 const hasAnswer = ans !== undefined && ans !== null && ans !== '' &&
                     (Array.isArray(ans) ? ans.length > 0 : true);
 
@@ -1623,16 +1941,26 @@
                 } else {
                     btn.classList.remove('answered');
                 }
+                if (state.flagged[i]) {
+                    btn.classList.add('flagged-nav');
+                } else {
+                    btn.classList.remove('flagged-nav');
+                }
             });
         }
 
-        function saveAnswersAuto() {
-            const now = Date.now();
-            if (now - state.lastSaveTime > 30000) {
-                localStorage.setItem('oly_answers_' + state.roomCode + '_' + state.studentId,
-                    JSON.stringify(state.answers));
-                state.lastSaveTime = now;
+        function toggleFlag(index) {
+            state.flagged[index] = !state.flagged[index];
+            const btn = document.querySelector('#question-' + index + ' .flag-btn');
+            if (btn) {
+                btn.classList.toggle('flagged', state.flagged[index]);
             }
+            updateNavButtons();
+        }
+
+        function saveAnswersAuto() {
+            localStorage.setItem('oly_answers_' + state.roomCode + '_' + state.studentId,
+                JSON.stringify(state.answers));
         }
 
         function restoreAnswers() {
@@ -1696,17 +2024,72 @@
             }
         });
 
-        /* ===== SUBMIT ===== */
+        /* ===== SUBMIT FLOW: Exam → Summary → Submit ===== */
 
         document.getElementById('submitBtn').addEventListener('click', () => {
-            const unanswered = state.questions.length - Object.keys(state.answers).filter(k => {
-                const v = state.answers[k];
-                return v !== undefined && v !== null && v !== '' && (Array.isArray(v) ? v.length > 0 : true);
-            }).length;
-
-            document.getElementById('unansweredCountModal').textContent = unanswered;
-            document.getElementById('submitModal').classList.add('show');
+            showSummaryPage();
         });
+
+        function showSummaryPage() {
+            saveAnswersAuto();
+
+            const total = state.questions.length;
+            let answered = 0;
+            let flaggedCount = 0;
+            state.questions.forEach((q, i) => {
+                const key = 'q' + i + '_a';
+                const ans = state.answers[key];
+                if (ans !== undefined && ans !== null && ans !== '' &&
+                    (Array.isArray(ans) ? ans.length > 0 : true)) {
+                    answered++;
+                }
+                if (state.flagged[i]) flaggedCount++;
+            });
+            const unanswered = total - answered;
+
+            document.getElementById('sumAnswered').textContent = answered + ' đã trả lời';
+            document.getElementById('sumUnanswered').textContent = unanswered + ' chưa trả lời';
+            document.getElementById('sumFlagged').textContent = flaggedCount + ' đánh dấu';
+
+            const grid = document.getElementById('summaryGrid');
+            const stripBrief = (s) => String(s).replace(/<[^>]*>/g, '').trim().substring(0, 50);
+            grid.innerHTML = state.questions.map((q, i) => {
+                const key = 'q' + i + '_a';
+                const ans = state.answers[key];
+                const hasAnswer = ans !== undefined && ans !== null && ans !== '' &&
+                    (Array.isArray(ans) ? ans.length > 0 : true);
+                const isFlagged = state.flagged[i];
+                let cls = isFlagged ? 'si-flagged' : (hasAnswer ? 'si-answered' : 'si-unanswered');
+                let badge = isFlagged ? 'Cần xem lại' : (hasAnswer ? 'Đã trả lời' : 'Chưa trả lời');
+                const brief = stripBrief(q.text || q.content || '');
+                return '<div class="summary-item ' + cls + '" onclick="goBackToQuestion(' + i + ')">'
+                    + '<div class="si-num">' + (i + 1) + '</div>'
+                    + '<div class="si-text">' + brief + '...</div>'
+                    + '<div class="si-status">' + badge + '</div>'
+                    + '</div>';
+            }).join('');
+
+            showPage('summary');
+        }
+
+        function goBackToQuestion(index) {
+            showPage('exam');
+            goToQuestion(index);
+        }
+
+        function goBackFromSummary() {
+            showPage('exam');
+        }
+
+        async function finalSubmit() {
+            // Final confirmation modal
+            document.getElementById('unansweredCountModal').textContent =
+                state.questions.length - Object.keys(state.answers).filter(k => {
+                    const v = state.answers[k];
+                    return v !== undefined && v !== null && v !== '' && (Array.isArray(v) ? v.length > 0 : true);
+                }).length;
+            document.getElementById('submitModal').classList.add('show');
+        }
 
         function closeSubmitModal() {
             document.getElementById('submitModal').classList.remove('show');
@@ -1747,11 +2130,13 @@
                 if (q.type === 'single') {
                     // ans là index (0,1,2,3), so sánh với đáp án đúng
                     const selectedText = (q.options && q.options[ans]) ? q.options[ans] : '';
-                    // So sánh: bỏ HTML tags để so sánh thuần text
-                    const stripHtml = (s) => String(s).replace(/<[^>]*>/g, '').trim();
+                    // So sánh: bỏ HTML tags, chuẩn hóa khoảng trắng
+                    const stripHtml = (s) => String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
                     const correctText = stripHtml(q.correct);
                     const selectedStrip = stripHtml(selectedText);
-                    isCorrect = correctText === selectedStrip;
+                    // So sánh chính xác hoặc so sánh không phân biệt hoa thường
+                    isCorrect = correctText === selectedStrip ||
+                                correctText.toLowerCase() === selectedStrip.toLowerCase();
                 } else if (q.type === 'fill') {
                     // So sánh giá trị điền vào
                     const studentAns = String(ans).trim().replace(',', '.');
@@ -1799,13 +2184,14 @@
                 const res = await gasCall('submitExam', {
                     roomCode: state.roomCode,
                     roomId: state.room ? state.room.id : '',
+                    schoolId: state.schoolId || '',
                     studentId: state.studentInfo ? state.studentInfo.id : state.studentId,
                     studentName: state.studentInfo ? state.studentInfo.name : '',
                     school: state.studentInfo ? state.studentInfo.school : '',
                     sbd: state.studentId,
                     score: grade.score,
                     maxScore: state.room ? state.room.maxScore : 100,
-                    timeSpent: state.totalTime - state.timeRemaining,
+                    timeSpent: Math.round((state.totalTime - state.timeRemaining) / 60),
                     deviceId: state.deviceId,
                     answers: state.answers,
                     correctAnswers: grade.correctCount,
@@ -1842,10 +2228,13 @@
                 document.getElementById('detailIncorrect').textContent = result.incorrectAnswers || 0;
                 document.getElementById('detailUnanswered').textContent = result.unansweredCount || 0;
                 document.getElementById('resultMessage').textContent = 'Cảm ơn em đã tham gia!';
+                document.getElementById('reviewBtn').style.display = 'inline-block';
+                renderReview(result);
             } else {
                 document.getElementById('resultDetails').classList.remove('show');
                 document.getElementById('resultTitle').textContent = 'Bài thi đã được ghi nhận';
                 document.getElementById('resultMessage').textContent = 'Kết quả sẽ được công bố sau. Cảm ơn em!';
+                document.getElementById('reviewBtn').style.display = 'none';
             }
 
             if (score >= 80) {
@@ -1853,6 +2242,140 @@
             }
 
             showPage('result');
+        }
+
+        function toggleReviewMode() {
+            const sec = document.getElementById('reviewContainer');
+            const btn = document.getElementById('reviewBtn');
+            if (sec.style.display === 'none') {
+                sec.style.display = 'block';
+                btn.textContent = 'Ẩn Bài Làm';
+                sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                sec.style.display = 'none';
+                btn.textContent = 'Xem Lại Bài Làm';
+            }
+        }
+
+        function renderReview(result) {
+            const sec = document.getElementById('reviewContainer');
+            const stripHtml = (s) => String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+            let html = '<h2 style="text-align:center;font-size:18px;color:#1565C0;margin-bottom:16px;font-family:\'Be Vietnam Pro\',serif;">Chi tiết bài làm</h2>';
+
+            state.questions.forEach((q, i) => {
+                const key = 'q' + i + '_a';
+                const ans = state.answers[key];
+                const hasAnswer = ans !== undefined && ans !== null && ans !== '' &&
+                    (Array.isArray(ans) ? ans.length > 0 : true);
+
+                // Determine if correct
+                let isCorrect = false;
+                let statusClass = 'skipped';
+                let statusText = 'Bỏ qua';
+
+                if (hasAnswer) {
+                    if (q.type === 'single') {
+                        const selectedText = (q.options && q.options[ans]) ? q.options[ans] : '';
+                        const correctText = stripHtml(q.correct);
+                        const selectedStrip = stripHtml(selectedText);
+                        isCorrect = correctText === selectedStrip || correctText.toLowerCase() === selectedStrip.toLowerCase();
+                    } else if (q.type === 'fill') {
+                        const studentAns = String(ans).trim().replace(',', '.');
+                        const correctAns = String(q.correct).trim().replace(',', '.');
+                        isCorrect = studentAns === correctAns || parseFloat(studentAns) === parseFloat(correctAns);
+                    } else if (q.type === 'truefalse') {
+                        const correctLower = String(q.correct).toLowerCase().trim();
+                        const ansLower = String(ans).toLowerCase().trim();
+                        isCorrect = correctLower === ansLower ||
+                            (correctLower === 'đúng' && ansLower === 'true') ||
+                            (correctLower === 'sai' && ansLower === 'false');
+                    } else if (q.type === 'multiple') {
+                        const selected = Array.isArray(ans) ? [...ans].sort() : [];
+                        let correctIndices = [];
+                        if (Array.isArray(q.correct)) {
+                            correctIndices = q.correct.map(c => {
+                                const idx = q.options.findIndex(o => o === c);
+                                return idx;
+                            }).filter(x => x >= 0).sort();
+                        }
+                        isCorrect = JSON.stringify(selected) === JSON.stringify(correctIndices);
+                    }
+                    statusClass = isCorrect ? 'correct' : 'incorrect';
+                    statusText = isCorrect ? 'Đúng' : 'Sai';
+                }
+
+                html += '<div class="review-item ' + statusClass + '">';
+                html += '<div class="review-q-header">';
+                html += '<div class="review-q-num">' + (i + 1) + '</div>';
+                html += '<span style="font-size:13px;color:#888;">' + getQuestionTypeLabel(q.type) + ' &bull; ' + (q.point || 1) + ' điểm</span>';
+                html += '<span class="review-q-status">' + statusText + '</span>';
+                html += '</div>';
+                html += '<div class="review-q-text">' + (q.text || q.content || '') + '</div>';
+
+                // Show answers
+                if (q.type === 'single' || q.type === 'multiple') {
+                    (q.options || []).forEach(function(opt, j) {
+                        const correctText = stripHtml(q.correct);
+                        const optStrip = stripHtml(opt);
+                        const isCorrectOpt = (q.type === 'single')
+                            ? (correctText === optStrip || correctText.toLowerCase() === optStrip.toLowerCase())
+                            : (Array.isArray(q.correct) && q.correct.includes(opt));
+                        const isSelected = (q.type === 'single')
+                            ? (ans === j)
+                            : (Array.isArray(ans) && ans.includes(j));
+
+                        let cls = 'neutral';
+                        let icon = '';
+                        if (isCorrectOpt && isSelected) { cls = 'correct-ans'; icon = '&#10003; '; }
+                        else if (isCorrectOpt && !isSelected) { cls = 'correct-ans'; icon = '&#10003; '; }
+                        else if (!isCorrectOpt && isSelected) { cls = 'student-wrong'; icon = '&#10007; '; }
+
+                        html += '<div class="review-answer ' + cls + '">';
+                        html += '<span style="font-weight:700;min-width:20px;">' + icon + String.fromCharCode(65 + j) + '.</span>';
+                        html += '<span>' + opt + '</span>';
+                        if (isSelected && !isCorrectOpt) html += '<span style="margin-left:auto;font-size:11px;font-weight:600;">Em chọn</span>';
+                        if (isCorrectOpt) html += '<span style="margin-left:auto;font-size:11px;font-weight:600;">Đáp án đúng</span>';
+                        html += '</div>';
+                    });
+                } else if (q.type === 'truefalse') {
+                    const correctLower = String(q.correct).toLowerCase().trim();
+                    const ansLower = hasAnswer ? String(ans).toLowerCase().trim() : '';
+                    ['true', 'false'].forEach(function(val) {
+                        const label = val === 'true' ? 'Đúng' : 'Sai';
+                        const isCorrectOpt = (correctLower === val || correctLower === label.toLowerCase());
+                        const isSelected = (ansLower === val);
+                        let cls = 'neutral';
+                        let icon = '';
+                        if (isCorrectOpt && isSelected) { cls = 'correct-ans'; icon = '&#10003; '; }
+                        else if (isCorrectOpt) { cls = 'correct-ans'; icon = '&#10003; '; }
+                        else if (isSelected) { cls = 'student-wrong'; icon = '&#10007; '; }
+                        html += '<div class="review-answer ' + cls + '"><span style="font-weight:700;min-width:20px;">' + icon + '</span><span>' + label + '</span></div>';
+                    });
+                } else if (q.type === 'fill') {
+                    if (hasAnswer) {
+                        const cls2 = isCorrect ? 'correct-ans' : 'student-wrong';
+                        html += '<div class="review-answer ' + cls2 + '">Em điền: <strong>' + String(ans) + '</strong></div>';
+                    }
+                    if (!isCorrect) {
+                        html += '<div class="review-answer correct-ans">Đáp án đúng: <strong>' + String(q.correct) + '</strong></div>';
+                    }
+                } else if (q.type === 'essay') {
+                    if (hasAnswer) {
+                        html += '<div class="review-answer neutral" style="white-space:pre-wrap;">' + String(ans) + '</div>';
+                    }
+                    html += '<div style="font-size:12px;color:#888;margin-top:4px;">(Giáo viên chấm tay)</div>';
+                }
+
+                // Explanation
+                if (q.explain) {
+                    html += '<div class="review-explain">&#128161; ' + q.explain + '</div>';
+                }
+
+                html += '</div>';
+            });
+
+            sec.innerHTML = html;
         }
 
         function createConfetti() {
