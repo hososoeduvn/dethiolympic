@@ -2211,11 +2211,25 @@
                     isCorrect = correctText === selectedStrip ||
                                 correctText.toLowerCase() === selectedStrip.toLowerCase();
                 } else if (q.type === 'fill') {
-                    // So sánh giá trị điền vào
-                    const studentAns = String(ans).trim().replace(',', '.');
-                    const correctAns = String(q.correct).trim().replace(',', '.');
-                    isCorrect = studentAns === correctAns ||
-                                parseFloat(studentAns) === parseFloat(correctAns);
+                    // So sánh giá trị điền vào — hỗ trợ phân số, thập phân
+                    const evalFrac = (s) => {
+                        let v = String(s).trim().replace(',', '.').replace(/\s+/g, '');
+                        // Parse fraction: "3/5" → 0.6
+                        if (v.includes('/')) {
+                            const parts = v.split('/');
+                            if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1]) && Number(parts[1]) !== 0) {
+                                return Number(parts[0]) / Number(parts[1]);
+                            }
+                        }
+                        return parseFloat(v);
+                    };
+                    const studentVal = evalFrac(ans);
+                    const correctVal = evalFrac(q.correct);
+                    const studentStr = String(ans).trim().replace(',', '.').replace(/\s+/g, '');
+                    const correctStr = String(q.correct).trim().replace(',', '.').replace(/\s+/g, '');
+                    // So sánh: chuỗi giống nhau, hoặc giá trị số bằng nhau (thập phân ≈ phân số)
+                    isCorrect = studentStr === correctStr ||
+                                (!isNaN(studentVal) && !isNaN(correctVal) && Math.abs(studentVal - correctVal) < 0.0001);
                 } else if (q.type === 'truefalse') {
                     const correctLower = String(q.correct).toLowerCase().trim();
                     const ansLower = String(ans).toLowerCase().trim();
