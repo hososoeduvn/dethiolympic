@@ -1493,6 +1493,7 @@
                 </div>
 
                 <p class="result-message" id="resultMessage">Cảm ơn em đã tham gia!</p>
+                <div id="autoSubmitNotice" style="display:none;background:#FFF3CD;color:#856404;border:1px solid #FFEEBA;border-radius:8px;padding:12px 16px;margin:0.75rem auto;max-width:400px;font-size:0.9rem;text-align:center;"></div>
 
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
                     <button class="btn-back" onclick="location.reload()">Kết Thúc</button>
@@ -1619,7 +1620,7 @@
                     return { error: 'Mã phòng thi không tồn tại! Kiểm tra lại tên phòng.' };
                 }
 
-                if (room.roomOpen === false || room.roomOpen === 'false') {
+                if (room.roomOpen !== true && room.roomOpen !== 'true') {
                     return { error: 'Phòng thi chưa mở. Vui lòng chờ giáo viên phát lệnh bắt đầu.', code: 'ROOM_NOT_OPEN' };
                 }
 
@@ -2089,11 +2090,8 @@
 
             if (document.hidden) {
                 state.tabViolations++;
-                showTabWarning();
-
-                if (state.tabViolations >= 3) {
-                    autoSubmit();
-                }
+                // Dừng bài thi ngay lập tức khi chuyển tab
+                autoSubmit('Bài thi bị dừng do chuyển tab/ứng dụng khác. Bài đã được nộp tự động.');
             }
         });
 
@@ -2186,9 +2184,10 @@
             await submitExam();
         }
 
-        async function autoSubmit() {
+        async function autoSubmit(reason) {
             if (!state.submitted) {
                 state.submitted = true;
+                state.autoSubmitReason = reason || 'Hết giờ làm bài. Bài đã được nộp tự động.';
                 await submitExam();
             }
         }
@@ -2320,6 +2319,17 @@
 
             const score = result.score || 0;
             document.getElementById('scoreNumber').textContent = Math.round(score);
+
+            // Hiển thị lý do nộp bài tự động (chuyển tab)
+            const reasonEl = document.getElementById('autoSubmitNotice');
+            if (reasonEl) {
+                if (state.autoSubmitReason) {
+                    reasonEl.style.display = 'block';
+                    reasonEl.textContent = '⚠️ ' + state.autoSubmitReason;
+                } else {
+                    reasonEl.style.display = 'none';
+                }
+            }
 
             if (state.room.showResult) {
                 document.getElementById('resultDetails').classList.add('show');
