@@ -1642,9 +1642,7 @@
                     return { error: 'Mã phòng thi không tồn tại! Kiểm tra lại tên phòng.' };
                 }
 
-                if (room.roomOpen !== true && room.roomOpen !== 'true') {
-                    return { error: 'Phòng thi chưa mở. Vui lòng chờ giáo viên phát lệnh bắt đầu.', code: 'ROOM_NOT_OPEN' };
-                }
+                // Phòng đã published = cho vào thi
 
                 const normSBD = (s) => { let v = String(s||'').trim().toUpperCase(); if (/^\d+$/.test(v)) v = String(parseInt(v,10)); return v; };
                 const student = room.students?.find(s =>
