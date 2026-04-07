@@ -1031,7 +1031,20 @@
             gap: 16px;
         }
 
-        .summary-actions button {
+        .summary-footer {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 16px 24px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            border-top: 2px solid #E0E0E0;
+            z-index: 100;
+        }
+
+        .summary-actions button,
+        .summary-footer button {
             padding: 14px 32px;
             border: none;
             border-radius: 10px;
@@ -1043,17 +1056,23 @@
         }
 
         .btn-back-exam {
-            background: #f0f0f0;
+            background: #F5F5F5;
             color: #333;
+            border: 2px solid #DDD;
+            padding: 14px 28px !important;
+            font-size: 1rem !important;
         }
 
         .btn-back-exam:hover {
-            background: #e0e0e0;
+            background: #E0E0E0;
         }
 
         .btn-final-submit {
             background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
             color: white;
+            padding: 14px 36px !important;
+            font-size: 1.1rem !important;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.4);
         }
 
         .btn-final-submit:hover {
@@ -1455,8 +1474,11 @@
                 <div class="summary-grid" id="summaryGrid"></div>
             </div>
             <div class="summary-footer">
-                <button class="btn-back-exam" onclick="goBackFromSummary()">Quay Lại Làm Bài</button>
-                <button class="btn-final-submit" onclick="finalSubmit()">Nộp Bài Chính Thức</button>
+                <div style="text-align:center;margin-bottom:8px;font-size:0.85rem;color:#666;">Kiểm tra kỹ trước khi nộp — không thể làm lại sau khi nộp!</div>
+                <div style="display:flex;gap:16px;justify-content:center;">
+                  <button class="btn-back-exam" onclick="goBackFromSummary()">← Quay Lại Làm Bài</button>
+                  <button class="btn-final-submit" onclick="finalSubmit()">📤 Nộp Bài Chính Thức</button>
+                </div>
             </div>
         </div>
 
