@@ -1222,6 +1222,79 @@
             .btn-submit {
                 width: 100%;
             }
+
+            /* Summary page - mobile */
+            .summary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)) !important;
+                gap: 6px !important;
+            }
+            .summary-grid-wrap {
+                padding: 15px !important;
+            }
+            .summary-stats {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            /* Flag button */
+            .flag-btn {
+                font-size: 18px !important;
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            /* Review mode */
+            .review-item {
+                padding: 12px !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* Timer bar compact */
+            .timer-text {
+                font-size: 14px;
+            }
+            .progress-bar {
+                display: none;
+            }
+
+            /* Question sidebar narrower */
+            .question-nav {
+                width: 60px;
+                padding: 8px 4px;
+            }
+            .question-nav button {
+                width: 28px;
+                height: 28px;
+                font-size: 11px;
+            }
+        }
+
+        
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 25px 16px;
+                border-radius: 14px;
+            }
+            .login-title {
+                font-size: 20px;
+            }
+            .login-subtitle {
+                font-size: 12px;
+            }
+            .question-nav {
+                display: none;
+            }
+            .question-content {
+                padding: 15px;
+            }
+            .timer-bar {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            .confirm-card,
+            .result-card {
+                padding: 20px 15px;
+            }
         }
 
         /* ===== SCROLLBAR ===== */
