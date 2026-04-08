@@ -1853,7 +1853,7 @@
                     type: mappedType,
                     options: options,
                     correct: correct,
-                    point: q.point || 1
+                    point: Number(q.point) || 1
                 };
             });
         }
@@ -2283,7 +2283,7 @@
                 // essay: không chấm tự động
 
                 if (isCorrect) {
-                    score += (q.point || 1);
+                    score += Number(q.point) || 1;
                     correctCount++;
                 } else {
                     incorrectCount++;
